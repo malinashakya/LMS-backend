@@ -1,0 +1,19 @@
+server:
+  port: 8084
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/hrms
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+#    This tells your application to record detailed information about the SQL commands (like queries to the database) that Hibernate is generating and executing. This can help developers understand exactly what database operations Hibernate is performing.
+    org.hibernate.type: TRACE
+#    This tells your application to provide even more detailed information about how Hibernate is handling different data types (like numbers, strings, dates) and how it's connecting those data types to the database. It gives a deeper insight into how Hibernate is working behind the scenes.

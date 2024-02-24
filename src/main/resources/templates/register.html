@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" th:href="@{../css/styles.css}">
+<!--<style>-->
+<!--    body {-->
+<!--        font-family: Arial, sans-serif;-->
+<!--        background-color: #0e2433;-->
+<!--        color: white;-->
+<!--        text-align: center;-->
+<!--        margin: 0;-->
+<!--        padding: 0;-->
+<!--    }-->
+
+<!--    .container {-->
+<!--        max-width: 400px;-->
+<!--        margin: 0 auto;-->
+<!--        padding: 20px;-->
+<!--        background-color: #0e2433;-->
+<!--        border-radius: 5px;-->
+<!--        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-->
+<!--    }-->
+
+<!--    h2 {-->
+<!--        color: #45b6fe;-->
+<!--    }-->
+
+<!--    .form-group {-->
+<!--        margin-bottom: 20px;-->
+<!--    }-->
+
+<!--    label {-->
+<!--        display: block;-->
+<!--        font-weight: bold;-->
+<!--        margin-bottom: 5px;-->
+<!--        text-align: left;-->
+<!--    }-->
+
+<!--    input[type="text"],-->
+<!--    input[type="password"],-->
+<!--    input[type="email"] {-->
+<!--        width: 100%;-->
+<!--        padding: 10px;-->
+<!--        border: none;-->
+<!--        border-radius: 5px;-->
+<!--        background-color: #fff;-->
+<!--        color: #0e2433;-->
+<!--    }-->
+
+<!--    input[type="submit"] {-->
+<!--        background-color: #45b6fe;-->
+<!--        color: white;-->
+<!--        padding: 10px 20px;-->
+<!--        border: none;-->
+<!--        border-radius: 5px;-->
+<!--        cursor: pointer;-->
+<!--    }-->
+
+<!--    .message {-->
+<!--        background-color: #45b6fe;-->
+<!--        color: white;-->
+<!--        padding: 10px;-->
+<!--        margin-top: 20px;-->
+<!--        border-radius: 5px;-->
+<!--    }-->
+<!--</style>-->
+
+
+</head>
+<body>
+<div class="container">
+    <div class="message" th:if="${message != null}">
+        [[${message}]]
+    </div>
+    <h2>Registration Form</h2>
+    <form
+            th:action="@{/registration}"
+            method="post"
+            role="form"
+            th:object="${user}"
+    >
+        <div class="form-group">
+            <label for="fullname">Fullname:</label>
+            <input th:field="*{fullname}" type="text" id="fullname" name="fullname" placeholder="Enter your fullname" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input th:field="*{email}" type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input th:field="*{password}" type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <input type="submit" value="Register">
+    </form>
+
+</div>
+</body>
+</html>

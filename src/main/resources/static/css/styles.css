@@ -1,0 +1,66 @@
+@charset "ISO-8859-1";
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/55bebb51e4b036c52ebe8c45/1581577478318-BQ1HT47ZLIK0AMO7A190/minimalist+game+room+office?format=500w');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%; /* Adjusted to be responsive */
+    max-width: 400px;
+    margin: 150px auto 0;
+    padding: 20px;
+    background-color: rgba(14, 36, 51, 0.8); /* Adjusted transparency for better visibility */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #45b6fe;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: calc(100% - 20px); /* Adjusted to be responsive */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #0e2433;
+}
+
+input[type="submit"] {
+    background-color: #45b6fe;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.message {
+    background-color: #45b6fe;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
