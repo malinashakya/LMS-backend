@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,5 +55,13 @@
         </span>
 
 </div>
+
+<script>
+    // Redirect to http://localhost:5174/ after 3 seconds
+    setTimeout(function(){
+        window.location.href = "http://localhost:5173/";
+    }, 100); // 100 milliseconds = 0.1 seconds
+</script>
+
 </body>
 </html>
