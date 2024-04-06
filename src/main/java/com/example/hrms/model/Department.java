@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 //For making the database table
 public class Department {
     @Id
-    @GeneratedValue
+
     private String department_code;
     private String department_name;
 
