@@ -1,74 +1,10 @@
 <!DOCTYPE html>
-<html  lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
     <link rel="stylesheet" th:href="@{../css/styles.css}">
-<!--<style>-->
-<!--    body {-->
-<!--        font-family: Arial, sans-serif;-->
-<!--        background-color: #0e2433;-->
-<!--        color: white;-->
-<!--        text-align: center;-->
-<!--        margin: 0;-->
-<!--        padding: 0;-->
-<!--    }-->
-
-<!--    .container {-->
-<!--        max-width: 400px;-->
-<!--        margin: 0 auto;-->
-<!--        padding: 20px;-->
-<!--        background-color: #0e2433;-->
-<!--        border-radius: 5px;-->
-<!--        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);-->
-<!--    }-->
-
-<!--    h2 {-->
-<!--        color: #45b6fe;-->
-<!--    }-->
-
-<!--    .form-group {-->
-<!--        margin-bottom: 20px;-->
-<!--    }-->
-
-<!--    label {-->
-<!--        display: block;-->
-<!--        font-weight: bold;-->
-<!--        margin-bottom: 5px;-->
-<!--        text-align: left;-->
-<!--    }-->
-
-<!--    input[type="text"],-->
-<!--    input[type="password"],-->
-<!--    input[type="email"] {-->
-<!--        width: 100%;-->
-<!--        padding: 10px;-->
-<!--        border: none;-->
-<!--        border-radius: 5px;-->
-<!--        background-color: #fff;-->
-<!--        color: #0e2433;-->
-<!--    }-->
-
-<!--    input[type="submit"] {-->
-<!--        background-color: #45b6fe;-->
-<!--        color: white;-->
-<!--        padding: 10px 20px;-->
-<!--        border: none;-->
-<!--        border-radius: 5px;-->
-<!--        cursor: pointer;-->
-<!--    }-->
-
-<!--    .message {-->
-<!--        background-color: #45b6fe;-->
-<!--        color: white;-->
-<!--        padding: 10px;-->
-<!--        margin-top: 20px;-->
-<!--        border-radius: 5px;-->
-<!--    }-->
-<!--</style>-->
-
-
 </head>
 <body>
 <div class="container">
@@ -96,6 +32,22 @@
             <label for="password">Password:</label>
             <input th:field="*{password}" type="password" id="password" name="password" placeholder="Enter your password" required>
         </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input th:field="*{address}" type="text" id="address" name="address" placeholder="Enter your address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input th:field="*{dob}" type="date" id="dob" name="dob" required>
+        </div>
+
+        <div class="form-group">
+            <label for="contact">Contact Number:</label>
+            <input th:field="*{contact}" type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
+        </div>
+
         <input type="submit" value="Register">
     </form>
 

@@ -2,7 +2,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://images.squarespace-cdn.com/content/v1/55bebb51e4b036c52ebe8c45/1581577478318-BQ1HT47ZLIK0AMO7A190/minimalist+game+room+office?format=500w');
+    background-image: url('background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,6 +10,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
 .container {
@@ -17,9 +18,10 @@ body {
     max-width: 400px;
     margin: 150px auto 0;
     padding: 20px;
-    background-color: rgba(14, 36, 51, 0.8); /* Adjusted transparency for better visibility */
+    background-color: rgba(14, 36, 51, 0.6); /* Adjusted transparency for better visibility */
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
 }
 
 h2 {
