@@ -39,8 +39,8 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(request -> request.requestMatchers("/admin-page")
                         .hasAuthority("ADMIN").requestMatchers("/user-page").hasAuthority("USER")
-                        .requestMatchers("/registration", "leaves","leaves/{leaves_id}","departments","department","departments/{department_code}","employees","/employees/{id}","/css/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/department","/employee").permitAll()
+                        .requestMatchers("/registration", "leaves","leaves/{leaves_id}","departments","department","departments/{department_code}","employees","employee","/employees/{id}","/css/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/department","/employee","/leave").permitAll()
                         .anyRequest().authenticated())
 
                 .formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login")
