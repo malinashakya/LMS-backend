@@ -17,28 +17,27 @@ public class EmployeeController {
     @PostMapping("/employee")
     Employee newEmployee(@RequestBody Employee newEmployee)
     {
-        return employeeRepository.save(newEmployee);
+    return employeeRepository.save(newEmployee);
     }
     @GetMapping("/employees")
     List<Employee> getAllEmployees()
     {
         return employeeRepository.findAll();
     }
-    @GetMapping("/employees/{id}")
-    Employee getEmployeeById(@PathVariable Long id)
+    @GetMapping("/employees/{employeeId}")
+    Employee getEmployeeById(@PathVariable Long employeeId)
     {
-        return employeeRepository.findById((id)).orElseThrow(()-> new EmployeeNotFoundException(id));
+        return employeeRepository.findById((employeeId)).orElseThrow(()-> new EmployeeNotFoundException(employeeId));
     }
-    @PutMapping("/employees/{id}")
-    public Employee updateEmployee(@RequestBody Employee newEmployee, @PathVariable Long id)
+    @PutMapping("/employees/{employeeId}")
+    public Employee updateEmployee(@RequestBody Employee newEmployee, @PathVariable Long employeeId)
     {
-        return employeeRepository.findById(id).map(employee -> {
-            employee.setFullname(newEmployee.getFullname());
+        return employeeRepository.findById(employeeId).map(employee -> {
             employee.setAddress(newEmployee.getAddress());
             employee.setDateOfBirth(newEmployee.getDateOfBirth());
             employee.setContact(newEmployee.getContact());
             employee.setDepartment(newEmployee.getDepartment());
             return employeeRepository.save(employee);
-        }).orElseThrow(()->new EmployeeNotFoundException(id));
+        }).orElseThrow(()->new EmployeeNotFoundException(employeeId));
     }
 }
