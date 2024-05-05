@@ -39,7 +39,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(request -> request.requestMatchers("/admin-page")
                         .hasAuthority("ADMIN").requestMatchers("/user-page").hasAuthority("USER")
-                        .requestMatchers("/registration", "leaves","leaves/{leaves_id}","departments","department","departments/{department_code}","employees","/employee", "/employees/{employeeId}","employees/{employeeId}","/css/**").permitAll()
+                        .requestMatchers("/registration", "leaves/{leaveId}","/leaves/{leaveId}","/leave","leaves","departments","department","departments/{department_code}","employees","/employee", "/employees/{employeeId}","employees/{employeeId}","/css/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/department","/employee","/leave").permitAll()
                         .anyRequest().authenticated())
 
