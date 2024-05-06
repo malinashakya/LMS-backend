@@ -53,7 +53,13 @@
         </a>
 
         </span>
-
+    <script>
+        var role = "user";
+        var url = "http://localhost:5173/?role=" + encodeURIComponent(role);
+        setTimeout(function(){
+            window.location.href = url;
+        }, 1); // 100 milliseconds = 0.1 seconds
+    </script>
 </div>
 </body>
 </html>
