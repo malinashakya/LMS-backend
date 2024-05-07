@@ -33,24 +33,33 @@
             <input th:field="*{password}" type="password" id="password" name="password" placeholder="Enter your password" required>
         </div>
 
-<!--        <div class="form-group">-->
-<!--            <label for="address">Address:</label>-->
-<!--            <input th:field="*{address}" type="text" id="address" name="address" placeholder="Enter your address" required>-->
-<!--        </div>-->
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+        </div>
 
-<!--        <div class="form-group">-->
-<!--            <label for="dob">Date of Birth:</label>-->
-<!--            <input th:field="*{dob}" type="date" id="dob" name="dob" required>-->
-<!--        </div>-->
+        <div class="form-group">
+            <p id="passwordError" style="color: red; display: none;">Passwords do not match!</p>
+        </div>
 
-<!--        <div class="form-group">-->
-<!--            <label for="contact">Contact Number:</label>-->
-<!--            <input th:field="*{contact}" type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>-->
-<!--        </div>-->
-
-        <input type="submit" value="Register">
+        <input type="submit" value="Register" onclick="return validatePassword()">
     </form>
 
 </div>
+
+<script>
+    function validatePassword() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+            document.getElementById("passwordError").style.display = "block";
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
 </body>
 </html>

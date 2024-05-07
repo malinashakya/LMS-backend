@@ -20,6 +20,7 @@ public class Leave {
     private LocalDate leaveEndDate;
     private String leaveReason;
 
+    @Column(columnDefinition = "VARCHAR(255) DEFAULT 'Pending'")
     private String status;
 
     public Leave() {

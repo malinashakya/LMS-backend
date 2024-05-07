@@ -1,7 +1,10 @@
 package com.example.hrms.configuration;
 
+import com.example.hrms.model.User;
 import com.example.hrms.service.CustomSuccessHandler;
 import com.example.hrms.service.CustomUserDetailsService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,10 +12,13 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 
 @Configuration
 @EnableWebSecurity
@@ -39,12 +45,14 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(request -> request.requestMatchers("/admin-page")
                         .hasAuthority("ADMIN").requestMatchers("/user-page").hasAuthority("USER")
-                        .requestMatchers("/registration", "leaves/{leaveId}","/leaves/{leaveId}","/leave","leaves","departments","department","departments/{department_code}","employees","/employee", "/employees/{employeeId}","employees/{employeeId}","/css/**").permitAll()
+                        .requestMatchers("/registration", "api/session","/leaves","leave","departments","department","departments/{department_code}","employees","/employee", "/employees/{employeeId}","employees/{employeeId}","/css/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/department","/employee","/leave").permitAll()
                         .anyRequest().authenticated())
 
-                .formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login")
-                        .successHandler(customSuccessHandler).permitAll())
+                .formLogin(form -> form.loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .successHandler(customSuccessHandler)
+                        .permitAll())
 
                 .logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -58,5 +66,18 @@ public class SecurityConfig {
     public void configure (AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
     }
+    // Method to retrieve the user's ID and store it in the session
+    // Method to retrieve the user's ID and username and store them in the session
+    public void storeUserDetailsInSession(HttpServletRequest request) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            User user = (User) authentication.getPrincipal();
+            Long userId = user.getId();
+            String username = user.getFullname();
 
+            HttpSession session = request.getSession();
+            session.setAttribute("userId", userId);
+            session.setAttribute("username", username);
+        }
+    }
 }
