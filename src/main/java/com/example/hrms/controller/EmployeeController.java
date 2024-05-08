@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;

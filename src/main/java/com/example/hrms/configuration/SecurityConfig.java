@@ -66,18 +66,5 @@ public class SecurityConfig {
     public void configure (AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
     }
-    // Method to retrieve the user's ID and store it in the session
-    // Method to retrieve the user's ID and username and store them in the session
-    public void storeUserDetailsInSession(HttpServletRequest request) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            User user = (User) authentication.getPrincipal();
-            Long userId = user.getId();
-            String username = user.getFullname();
 
-            HttpSession session = request.getSession();
-            session.setAttribute("userId", userId);
-            session.setAttribute("username", username);
-        }
-    }
 }
