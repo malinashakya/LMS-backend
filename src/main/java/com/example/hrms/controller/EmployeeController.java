@@ -1,5 +1,6 @@
 package com.example.hrms.controller;
 
+import com.example.hrms.exception.DepartmentNotFoundException;
 import com.example.hrms.exception.EmployeeNotFoundException;
 import com.example.hrms.model.Employee;
 import com.example.hrms.repository.EmployeeRepository;
@@ -39,5 +40,16 @@ public class EmployeeController {
             employee.setDepartment(newEmployee.getDepartment());
             return employeeRepository.save(employee);
         }).orElseThrow(()->new EmployeeNotFoundException(employeeId));
+    }
+    @DeleteMapping("/employees/{employeeId}")
+    String deleteEmployee(@PathVariable Long employeeId)
+    {
+
+        if(!employeeRepository.existsById(employeeId))
+        {
+            throw new EmployeeNotFoundException(employeeId);
+        }
+        employeeRepository.deleteById(employeeId);
+        return "Employee with id:"+ employeeId+" has been deleted successfully";
     }
 }

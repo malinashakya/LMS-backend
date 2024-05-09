@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:5173")
+@CrossOrigin(origins={"*"})
 public class LeaveController  {
     @Autowired
     private LeaveRepository leaveRepository;
@@ -30,13 +30,13 @@ public class LeaveController  {
         return leaveRepository.findById(leave_id).orElseThrow(()->new LeaveNotFoundException(leave_id));
     }
     @PutMapping("/leaves/{leaveId}")
-    public Leave updateLeave(@RequestBody Leave newLeave, @PathVariable Long leave_id) {
-        return leaveRepository.findById(leave_id).map(leave -> {
+    public Leave updateLeave(@RequestBody Leave newLeave, @PathVariable Long leaveId) {
+        return leaveRepository.findById(leaveId).map(leave -> {
             leave.setLeaveEndDate(newLeave.getLeaveEndDate());
             leave.setLeaveReason(newLeave.getLeaveReason());
             leave.setLeaveStartDate(newLeave.getLeaveStartDate());
             leave.setLeaveType(newLeave.getLeaveType());
             return leaveRepository.save(leave); // Return the updated leave object
-        }).orElseThrow(() -> new LeaveNotFoundException(leave_id));
+        }).orElseThrow(() -> new LeaveNotFoundException(leaveId));
     }
 }
