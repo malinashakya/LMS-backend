@@ -26,8 +26,8 @@ public class LeaveController  {
        return leaveRepository.findAll();
     }
     @GetMapping("/leaves/{leaveId}")
-    Leave getLeaveById(@PathVariable Long leave_id){
-        return leaveRepository.findById(leave_id).orElseThrow(()->new LeaveNotFoundException(leave_id));
+    Leave getLeaveById(@PathVariable Long leaveId){
+        return leaveRepository.findById(leaveId).orElseThrow(()->new LeaveNotFoundException(leaveId));
     }
     @PutMapping("/leaves/{leaveId}")
     public Leave updateLeave(@RequestBody Leave newLeave, @PathVariable Long leaveId) {
@@ -36,6 +36,7 @@ public class LeaveController  {
             leave.setLeaveReason(newLeave.getLeaveReason());
             leave.setLeaveStartDate(newLeave.getLeaveStartDate());
             leave.setLeaveType(newLeave.getLeaveType());
+            leave.setStatus(newLeave.getStatus());
             return leaveRepository.save(leave); // Return the updated leave object
         }).orElseThrow(() -> new LeaveNotFoundException(leaveId));
     }
