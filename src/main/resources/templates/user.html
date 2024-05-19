@@ -36,7 +36,6 @@
             color: #45b6fe;
         }
 
-        /* Add more styles and components for your dashboard here */
     </style>
 </head>
 <body>
@@ -55,7 +54,9 @@
         </span>
     <script>
         var role = "user";
-        var url = "http://localhost:5173/?role=" + encodeURIComponent(role);
+        var fullname = '[[${user.getFullname()}]]';
+        var id='[[${user.getId()}]]';
+        var url = "http://localhost:5173/?role=" + encodeURIComponent(role)+ "&fullname=" + encodeURIComponent(fullname)+ "&id=" + encodeURIComponent(id);
         setTimeout(function(){
             window.location.href = url;
         }, 1); // 100 milliseconds = 0.1 seconds
