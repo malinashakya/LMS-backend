@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/hrms
+    url: jdbc:mysql://localhost:3306/lms
     username: root
     password:
     driver-class-name: com.mysql.cj.jdbc.Driver

@@ -1,6 +1,7 @@
 package com.example.hrms.controller;
 
 import com.example.hrms.DTO.UserDTO;
+import com.example.hrms.model.User; // Added import for User model
 import com.example.hrms.service.UserService;
 
 import java.security.Principal;
@@ -30,27 +31,27 @@ public class UserController {
 
     @PostMapping("/registration")
     public String saveUser(@ModelAttribute("user") UserDTO userDTO, Model model) {
-        userService.save(userDTO);
-        model.addAttribute("message", "Registered Successfully");
+        User registeredUser = userService.save(userDTO); // Capture the returned User object
+        model.addAttribute("message", "Registered Successfully! Your user ID is: " + registeredUser.getId()); // Correct the model attribute
         return "register";
     }
+
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
     @GetMapping("user-page")
-    public String userPage (Model model, Principal principal) {
+    public String userPage(Model model, Principal principal) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
         model.addAttribute("user", userDetails);
         return "user";
     }
 
     @GetMapping("admin-page")
-    public String adminPage (Model model, Principal principal) {
+    public String adminPage(Model model, Principal principal) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
         model.addAttribute("user", userDetails);
         return "admin";
     }
-
 }
